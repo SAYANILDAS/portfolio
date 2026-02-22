@@ -38,19 +38,20 @@ export default function AchievementsSection() {
   const [active, setActive] = useState<number | null>(null);
 
   return (
-    <section id="achievements" className="relative overflow-hidden py-32 px-6">
+    <section
+      id="achievements"
+      className="relative overflow-hidden py-20 md:py-32 px-6 bg-white md:bg-transparent text-black md:text-white"
+    >
+      {/* Desktop Cinematic Layers */}
+      <div className="hidden md:block">
+        <SectionTransitionOverlay />
+      </div>
 
-      {/* 🔥 AI Scan Overlay */}
-      <SectionTransitionOverlay />
+      <div className="hidden md:block absolute inset-0 futuristic-grid opacity-20 pointer-events-none" />
 
-      {/* Futuristic Grid Background */}
-      <div className="absolute inset-0 futuristic-grid opacity-20 pointer-events-none" />
+      <div className="hidden md:block absolute -top-40 left-1/2 -translate-x-1/2 w-[1000px] h-[900px] bg-purple-700/30 blur-[240px] rounded-full pointer-events-none" />
 
-      {/* Stronger Ambient Halo */}
-      <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[1000px] h-[900px] bg-purple-700/30 blur-[240px] rounded-full pointer-events-none" />
-
-      {/* Subtle Moving Top Scan */}
-      <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-purple-500/50 to-transparent animate-pulse opacity-40" />
+      <div className="hidden md:block absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-purple-500/50 to-transparent animate-pulse opacity-40" />
 
       <SectionReveal>
         <div className="max-w-6xl mx-auto relative z-10">
@@ -61,21 +62,21 @@ export default function AchievementsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-center mb-24"
+            className="text-center mb-16 md:mb-24"
           >
-            <h2 className="text-4xl md:text-5xl font-bold">
+            <h2 className="text-2xl md:text-5xl font-bold">
               Milestones & Recognition
             </h2>
-            <p className="text-gray-400 mt-6 max-w-2xl mx-auto">
+            <p className="text-gray-600 md:text-gray-400 mt-4 md:mt-6 max-w-2xl mx-auto text-sm md:text-base">
               A structured timeline of leadership, innovation, and high-impact recognition.
             </p>
           </motion.div>
 
-          {/* Timeline */}
-          <div className="relative space-y-16">
+          {/* Timeline Container */}
+          <div className="relative space-y-10 md:space-y-16">
 
-            {/* Vertical Luminous Spine */}
-            <div className="absolute left-4 md:left-6 top-0 bottom-0 w-[2px] bg-gradient-to-b from-purple-500/70 via-purple-400/30 to-transparent" />
+            {/* Vertical Spine — Desktop Only */}
+            <div className="hidden md:block absolute left-6 top-0 bottom-0 w-[2px] bg-gradient-to-b from-purple-500/70 via-purple-400/30 to-transparent" />
 
             {achievements.map((item, index) => (
               <motion.div
@@ -84,31 +85,46 @@ export default function AchievementsSection() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
-                className="relative pl-14"
+                className="relative md:pl-14"
               >
-                {/* Pulsing Node */}
-                <div className="absolute left-0 top-3 w-4 h-4 rounded-full bg-purple-500 shadow-[0_0_30px_rgba(124,58,237,0.9)] animate-pulse" />
+                {/* Timeline Node — Desktop Only */}
+                <div className="hidden md:block absolute left-0 top-3 w-4 h-4 rounded-full bg-purple-500 shadow-[0_0_30px_rgba(124,58,237,0.9)] animate-pulse" />
 
-                {/* Glass Card */}
+                {/* Card */}
                 <motion.div
-                  whileHover={{ scale: 1.03 }}
-                  className="group relative bg-white/5 backdrop-blur-2xl border border-purple-500/20 rounded-3xl p-10 shadow-[0_0_70px_rgba(124,58,237,0.2)] hover:shadow-[0_0_120px_rgba(124,58,237,0.4)] transition"
+                  whileHover={{ scale: 1.01 }}
+                  className="relative group 
+                  bg-gray-50 md:bg-white/5 
+                  backdrop-blur-0 md:backdrop-blur-2xl 
+                  border border-gray-200 md:border-purple-500/20 
+                  rounded-2xl md:rounded-3xl 
+                  p-6 md:p-10 
+                  shadow-sm md:shadow-[0_0_70px_rgba(124,58,237,0.2)] 
+                  hover:md:shadow-[0_0_120px_rgba(124,58,237,0.4)] 
+                  transition"
                 >
+                  {/* Desktop Glow */}
+                  <div className="hidden md:block absolute inset-0 bg-purple-600/5 opacity-0 group-hover:opacity-100 transition duration-500 rounded-3xl blur-xl pointer-events-none" />
 
-                  {/* Hover Glow Layer */}
-                  <div className="absolute inset-0 bg-purple-600/5 opacity-0 group-hover:opacity-100 transition duration-500 rounded-3xl blur-xl pointer-events-none" />
+                  {/* Header Row */}
+                  <div className="flex justify-between items-start flex-wrap gap-3">
 
-                  {/* Card Content */}
-                  <div className="flex justify-between items-start flex-wrap gap-4">
-
-                    <div className="flex items-center gap-4">
-                      <Award className="text-purple-400" size={24} />
-                      <h3 className="text-xl font-semibold">
+                    <div className="flex items-center gap-3">
+                      <Award
+                        className="text-purple-600 md:text-purple-400"
+                        size={20}
+                      />
+                      <h3 className="text-base md:text-xl font-semibold text-black md:text-white">
                         {item.title}
                       </h3>
                     </div>
 
-                    <span className="px-4 py-2 rounded-full bg-purple-600/10 border border-purple-500/20 text-purple-300 text-sm">
+                    <span className="px-3 md:px-4 py-1.5 md:py-2 
+                      rounded-full 
+                      bg-purple-100 md:bg-purple-600/10 
+                      border border-purple-300 md:border-purple-500/20 
+                      text-purple-700 md:text-purple-300 
+                      text-xs md:text-sm">
                       {item.tag}
                     </span>
                   </div>
@@ -118,7 +134,7 @@ export default function AchievementsSection() {
                     onClick={() =>
                       setActive(active === index ? null : index)
                     }
-                    className="mt-6 text-purple-400 hover:text-purple-300 transition"
+                    className="mt-5 md:mt-6 text-purple-600 md:text-purple-400 hover:opacity-80 transition text-sm md:text-base"
                   >
                     {active === index ? "Hide Details" : "View Details"}
                   </button>
@@ -131,7 +147,7 @@ export default function AchievementsSection() {
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
                         transition={{ duration: 0.4 }}
-                        className="mt-6 text-gray-400 overflow-hidden"
+                        className="mt-5 md:mt-6 text-gray-600 md:text-gray-400 overflow-hidden text-sm md:text-base leading-relaxed"
                       >
                         {item.description}
                       </motion.div>
@@ -143,6 +159,7 @@ export default function AchievementsSection() {
             ))}
 
           </div>
+
         </div>
       </SectionReveal>
     </section>

@@ -1,35 +1,31 @@
 "use client";
 
-import GlobalTransition from "@/components/GlobalTransition";
-
 import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import ExecutiveSummary from "@/components/ExecutiveSummary";
-import SystemsSection from "@/components/SystemsSection";
-import WorkSection from "@/components/WorkSection";
-import SkillsSection from "@/components/SkillsSection";
-import AchievementsSection from "@/components/AchievementsSection";
-import CertificationsSection from "@/components/CertificationsSection";
-import Contact from "@/components/Contact";
+import GlobalTransition from "@/components/GlobalTransition";
+import DesktopHome from "@/components/DesktopHome";
+import MobileHome from "@/components/mobile/MobileHome";
+import MobileBottomNav from "@/components/mobile/layout/MobileBottomNav";
 
 export default function Home() {
   return (
     <>
-      {/* Navbar OUTSIDE animation wrapper */}
-      <Navbar />
+      {/* Desktop Navbar */}
+      <div className="hidden md:block">
+        <Navbar />
+      </div>
 
+      {/* Page Content Animation Only */}
       <GlobalTransition>
-        <main className="relative z-0">
-          <Hero />
-          <ExecutiveSummary />
-          <SystemsSection />
-          <WorkSection />
-          <SkillsSection />
-          <AchievementsSection />
-          <CertificationsSection />
-          <Contact />
-        </main>
+        <>
+          <DesktopHome />
+          <MobileHome />
+        </>
       </GlobalTransition>
+
+      {/* Mobile Bottom Navigation */}
+      <div className="block md:hidden">
+        <MobileBottomNav />
+      </div>
     </>
   );
 }

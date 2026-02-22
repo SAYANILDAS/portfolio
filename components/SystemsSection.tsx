@@ -29,19 +29,21 @@ export default function SystemsSection() {
   return (
     <section
       id="systems"
-      className="relative overflow-hidden py-32 px-6"
+      className="relative overflow-hidden py-20 md:py-32 px-6 bg-white md:bg-transparent text-black md:text-white"
     >
-      {/* 🔥 AI Scan Overlay */}
-      <SectionTransitionOverlay />
+      {/* 🔥 AI Scan Overlay — Desktop Only */}
+      <div className="hidden md:block">
+        <SectionTransitionOverlay />
+      </div>
 
-      {/* Futuristic Grid */}
-      <div className="absolute inset-0 futuristic-grid opacity-30 pointer-events-none" />
+      {/* Futuristic Grid — Desktop Only */}
+      <div className="hidden md:block absolute inset-0 futuristic-grid opacity-30 pointer-events-none" />
 
-      {/* Strong Ambient Halo */}
-      <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[1000px] h-[900px] bg-purple-700/35 blur-[240px] rounded-full pointer-events-none" />
+      {/* Ambient Halo — Desktop Only */}
+      <div className="hidden md:block absolute -top-40 left-1/2 -translate-x-1/2 w-[1000px] h-[900px] bg-purple-700/35 blur-[240px] rounded-full pointer-events-none" />
 
-      {/* Top Scan Beam */}
-      <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-purple-500/60 to-transparent animate-pulse opacity-40" />
+      {/* Top Scan Beam — Desktop Only */}
+      <div className="hidden md:block absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-purple-500/60 to-transparent animate-pulse opacity-40" />
 
       <SectionReveal>
         <div className="max-w-6xl mx-auto relative z-10">
@@ -52,19 +54,19 @@ export default function SystemsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-center mb-24"
+            className="text-center mb-16 md:mb-24"
           >
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+            <h2 className="text-2xl md:text-5xl font-bold tracking-tight">
               AI Systems Architecture
             </h2>
-            <p className="text-gray-400 mt-6 max-w-2xl mx-auto">
+            <p className="text-gray-600 md:text-gray-400 mt-4 md:mt-6 max-w-2xl mx-auto text-sm md:text-base">
               Production-grade intelligent systems engineered for performance,
               scalability, and measurable real-world impact.
             </p>
           </motion.div>
 
           {/* Systems Stack */}
-          <div className="space-y-12">
+          <div className="space-y-8 md:space-y-12">
 
             {systems.map((system, index) => (
               <motion.div
@@ -73,15 +75,23 @@ export default function SystemsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
-                whileHover={{ scale: 1.02 }}
-                className="relative group bg-white/5 backdrop-blur-2xl border border-purple-500/20 rounded-3xl p-12 shadow-[0_0_90px_rgba(124,58,237,0.25)] hover:shadow-[0_0_160px_rgba(124,58,237,0.45)] transition"
+                whileHover={{ scale: 1.01 }}
+                className="relative group 
+                bg-gray-50 md:bg-white/5 
+                backdrop-blur-0 md:backdrop-blur-2xl 
+                border border-gray-200 md:border-purple-500/20 
+                rounded-2xl md:rounded-3xl 
+                p-6 md:p-12 
+                shadow-sm md:shadow-[0_0_90px_rgba(124,58,237,0.25)] 
+                hover:md:shadow-[0_0_160px_rgba(124,58,237,0.45)] 
+                transition"
               >
-                {/* Hover Glow Layer */}
-                <div className="absolute inset-0 bg-purple-600/10 opacity-0 group-hover:opacity-100 transition duration-500 rounded-3xl blur-xl pointer-events-none" />
+                {/* Hover Glow Layer — Desktop Only */}
+                <div className="hidden md:block absolute inset-0 bg-purple-600/10 opacity-0 group-hover:opacity-100 transition duration-500 rounded-3xl blur-xl pointer-events-none" />
 
-                <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-6">
+                <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 md:gap-6">
 
-                  <h3 className="text-2xl font-semibold text-white">
+                  <h3 className="text-lg md:text-2xl font-semibold text-black md:text-white">
                     {system.title}
                   </h3>
 
@@ -89,14 +99,19 @@ export default function SystemsSection() {
                     onClick={() =>
                       setActiveIndex(activeIndex === index ? null : index)
                     }
-                    className="text-purple-400 hover:text-purple-300 transition font-medium"
+                    className="text-purple-600 md:text-purple-400 hover:opacity-80 transition font-medium text-sm md:text-base"
                   >
                     {activeIndex === index ? "− Collapse" : "+ Expand Architecture"}
                   </button>
                 </div>
 
                 {/* Metric Badge */}
-                <div className="mt-6 inline-flex items-center bg-purple-600/15 border border-purple-500/30 text-purple-300 px-5 py-2 rounded-full text-sm shadow-[0_0_25px_rgba(124,58,237,0.3)]">
+                <div className="mt-4 md:mt-6 inline-flex items-center 
+                bg-purple-100 md:bg-purple-600/15 
+                border border-purple-300 md:border-purple-500/30 
+                text-purple-700 md:text-purple-300 
+                px-4 md:px-5 py-2 rounded-full text-xs md:text-sm 
+                shadow-none md:shadow-[0_0_25px_rgba(124,58,237,0.3)]">
                   {system.metrics}
                 </div>
 
@@ -108,19 +123,27 @@ export default function SystemsSection() {
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.4 }}
-                      className="mt-10 overflow-hidden"
+                      className="mt-6 md:mt-10 overflow-hidden"
                     >
-                      <p className="text-gray-400 leading-relaxed">
+                      <p className="text-gray-600 md:text-gray-400 leading-relaxed text-sm md:text-base">
                         {system.architecture}
                       </p>
 
                       {/* Tech Stack */}
-                      <div className="flex flex-wrap gap-4 mt-8">
+                      <div className="flex flex-wrap gap-3 md:gap-4 mt-6 md:mt-8">
                         {system.tech.map((tech, i) => (
                           <motion.span
                             key={i}
-                            whileHover={{ scale: 1.1 }}
-                            className="px-5 py-2 rounded-full bg-purple-600/15 border border-purple-500/30 text-purple-200 text-sm shadow-[0_0_25px_rgba(124,58,237,0.25)] hover:shadow-[0_0_45px_rgba(124,58,237,0.45)] transition"
+                            whileHover={{ scale: 1.05 }}
+                            className="px-4 md:px-5 py-1.5 md:py-2 
+                            rounded-full 
+                            bg-gray-200 md:bg-purple-600/15 
+                            border border-gray-300 md:border-purple-500/30 
+                            text-gray-800 md:text-purple-200 
+                            text-xs md:text-sm 
+                            shadow-none md:shadow-[0_0_25px_rgba(124,58,237,0.25)] 
+                            hover:md:shadow-[0_0_45px_rgba(124,58,237,0.45)] 
+                            transition"
                           >
                             {tech}
                           </motion.span>

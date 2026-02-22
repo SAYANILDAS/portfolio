@@ -17,7 +17,7 @@ export default function ExecutiveSummary() {
       {/* Futuristic Grid */}
       <div className="absolute inset-0 futuristic-grid opacity-25 pointer-events-none" />
 
-      {/* Stronger Ambient Halo */}
+      {/* Strong Ambient Halo */}
       <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[1000px] h-[900px] bg-purple-700/35 blur-[240px] rounded-full pointer-events-none" />
 
       {/* Subtle Top Scan Beam */}
