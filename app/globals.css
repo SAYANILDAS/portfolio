@@ -1,33 +1,77 @@
 @import "tailwindcss";
 
+/* ---------- BASE COLOR SYSTEM ---------- */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-primary: #0b0b12;
+  --bg-secondary: #11111a;
+  --purple-main: #7c3aed;
+  --purple-glow: rgba(124, 58, 237, 0.45);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* ---------- GLOBAL BODY ---------- */
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: radial-gradient(
+      circle at 50% 0%,
+      rgba(124, 58, 237, 0.15),
+      transparent 60%
+    ),
+    var(--bg-primary);
+
+  color: white;
+  font-family: var(--font-geist-sans);
 }
+
+/* ---------- FUTURISTIC GRID BACKGROUND ---------- */
+
+.futuristic-grid {
+  background-image:
+    linear-gradient(rgba(124, 58, 237, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124, 58, 237, 0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ---------- GLOW UTILITIES ---------- */
+
+.purple-glow-soft {
+  background: radial-gradient(
+    circle,
+    rgba(124, 58, 237, 0.35),
+    transparent 70%
+  );
+}
+
+.purple-glow-strong {
+  background: radial-gradient(
+    circle,
+    rgba(124, 58, 237, 0.6),
+    transparent 60%
+  );
+}
+
+/* ---------- SECTION SYSTEM ---------- */
+
+section {
+  padding-top: 140px;
+  padding-bottom: 140px;
+  position: relative;
+}
+
+.section-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(124, 58, 237, 0.6),
+    transparent
+  );
+  margin: 120px auto;
+  width: 70%;
+}
+
+/* ---------- SCROLL SMOOTH ---------- */
+
 html {
   scroll-behavior: smooth;
-}
-section {
-  padding-top: 120px;
-  padding-bottom: 120px;
 }
