@@ -16,22 +16,22 @@ export default function MobileBottomNav() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 150;
+      const scrollPosition = window.scrollY + 120;
 
-      for (let item of navItems) {
+      navItems.forEach((item) => {
         const section = document.getElementById(item.id);
-        if (section) {
-          const offsetTop = section.offsetTop;
-          const offsetHeight = section.offsetHeight;
+        if (!section) return;
 
-          if (
-            scrollPosition >= offsetTop &&
-            scrollPosition < offsetTop + offsetHeight
-          ) {
-            setActive(item.id);
-          }
+        const top = section.offsetTop;
+        const height = section.offsetHeight;
+
+        if (
+          scrollPosition >= top &&
+          scrollPosition < top + height
+        ) {
+          setActive(item.id);
         }
-      }
+      });
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -39,7 +39,7 @@ export default function MobileBottomNav() {
   }, []);
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-[999]">
+    <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-[9999]">
       <div className="flex justify-around py-3">
         {navItems.map((item, index) => {
           const Icon = item.icon;
